@@ -29,7 +29,7 @@ export default {
             // mapAction лучше использовать что бы  каждый раз this.$store.dispatch
             await this.$store.dispatch('getKey', this.key) // Получили input key и сохранили
 
-          // Запрос вынести в стор и там мутации проводить, зачем здесь?
+          // Запрос вынести в acton и там мутации проводить, зачем здесь?
             const response = await this.$api.request.getAllMovies(this.page)
             await this.$store.dispatch('fetchApi', response)
             await this.$store.dispatch('getStatusAuth', response.status)
