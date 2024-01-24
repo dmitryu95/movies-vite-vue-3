@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-       
         <div class="list-container" 
             :class="{active: loading}">
             <div class="movie-small-card" 
@@ -52,6 +51,9 @@ export default {
             isActive: false,
         }
     },
+    mounted() {
+        this.$api.request.getAllMovies(this.$store.getters.getNumberPage);
+    },
     computed: {
         allMovies() {
             return this.$store.getters.allMovies
@@ -75,7 +77,6 @@ export default {
                 this.loading = true;
                 const response = await this.$api.request.getAllMovies(this.$store.getters.getNumberPage);
                 this.$store.dispatch('fetchApi', response)
-                // this.$store.dispatch('getMovies', response);
                 this.$store.dispatch('getStatusAuth', response);
                 this.loading = false;
             } catch (error) {
@@ -91,7 +92,6 @@ export default {
                     if(response.status === 200) {
                         console.log(`request: ${response.data}`)
                         this.$router.push({ name: 'card', params: { id: `${page}` }})
-                        // this.$store.dispatch('getMovie', response.data)
                         this.$store.dispatch('fetchApi', response)
                     }
                 } catch(error) {

@@ -42,6 +42,12 @@
     justify-content: center;
     background-color: #ada7a6;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.movie-small-card:hover {
+    width: 320px;
+    height: 420px;
 }
 
 .carg-small-wrap {
