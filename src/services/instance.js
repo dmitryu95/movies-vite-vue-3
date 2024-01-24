@@ -12,11 +12,12 @@ const instance = axios.create({
 
 // Установить введенный ключ
 watchEffect(() => {
-  const key = store.state.auth.key
-  if(key) {
-    instance.defaults.headers.common['X-API-KEY'] = key
-  }
-  console.log(`${key}`)
+    const key = localStorage.getItem('authKey');
+
+    if (key) {
+      console.log(`${key}`)
+      instance.defaults.headers.common['X-API-KEY'] = key;
+    }
 })
 
 export default instance;

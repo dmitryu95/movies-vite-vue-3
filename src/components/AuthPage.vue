@@ -21,6 +21,16 @@ export default {
             page: '1'
         }
     },
+    mounted() {
+        if(localStorage.authKey) {
+            this.key = localStorage.authKey
+        }
+    },
+    watch: {
+        key(newKey) {
+            localStorage.authKey = newKey
+        }
+    },
     methods: {
         async sendRequest() {
             await this.$store.dispatch('getKey', this.key) // Получили input key и сохранили

@@ -46,8 +46,9 @@
 }
 
 .movie-small-card:hover {
-    width: 320px;
-    height: 420px;
+    width: 350px;
+    height: 450px;
+    transition: 1s;
 }
 
 .carg-small-wrap {

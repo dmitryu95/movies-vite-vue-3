@@ -52,7 +52,8 @@ export default {
         }
     },
     mounted() {
-        this.$api.request.getAllMovies(this.$store.getters.getNumberPage);
+        console.log('номер')
+        this.sendRequest()
     },
     computed: {
         allMovies() {
