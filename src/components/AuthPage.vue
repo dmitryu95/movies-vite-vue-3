@@ -1,9 +1,11 @@
 <template>
+  <!в идеале использовать нативные теги, типа form>
     <div class="auth-container">
         <h1>Введите ваш ключ</h1>
         <input type="text"
             v-model="key"
             class="auth-key">
+      <!почему стили не в классах?>
         <button type="button"
             style="width:100%;
                 margin-top: 50px;"
@@ -23,10 +25,15 @@ export default {
     },
     methods: {
         async sendRequest() {
+            // mapAction лучше использовать что бы  каждый раз this.$store.dispatch
             await this.$store.dispatch('getKey', this.key) // Получили input key и сохранили
+
+          // Запрос вынести в стор и там мутации проводить, зачем здесь?
             const response = await this.$api.request.getAllMovies(this.page)
             await this.$store.dispatch('fetchApi', response)
             await this.$store.dispatch('getStatusAuth', response.status)
+
+          //Почему state а не getters
             if(this.$store.state.auth.statusAuth) { 
                 this.$router.push({ name: 'MoviesList'})
             } else this.$router.push({ name: 'AuthPage'})
@@ -50,7 +57,8 @@ export default {
         border: 4px solid #88b3f7;
         border-radius: 12px;
         font-size: 20px;
-        padding: 0px 5px ;
+      /*даже idea подсвечивет, что нельзя писать px у 0*/
+      padding: 0px 5px ;
         font-family: 'Times New Roman', Times, serif;
         text-align: center;
     }
