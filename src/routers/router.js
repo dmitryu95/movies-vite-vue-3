@@ -11,13 +11,14 @@ const routes = [
         props: true,
     },
     {
-        path: '/movies',
+        // сделать page динамически
+        path: '/movies/page=:page',
         component: MovieListPage,
         name: 'MoviesList',
         props: true
     },
     {
-        path: '/movie/:id',
+        path: '/movie/id=:id',
         component: MovieCard,
         name: 'card',
         props: true

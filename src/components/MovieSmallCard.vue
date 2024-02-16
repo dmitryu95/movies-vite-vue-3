@@ -1,40 +1,44 @@
 <template>
-    <div class="carg-small-wrap"
-        @click="handleClick" 
-        :id="id">
+  <div class="movie__card-small"
+       v-show="movie.nameRu !== null">
+    <div class="card__small--wrap"
+        @click="handleClick"
+        :id="movie.kinopoiskId">
         <div class="card-image-small-wrap">
             <img class="card-image-small"
-                :src="img" alt="image">
-            
+                :src="movie.posterUrl" alt="image">
         </div>
         <p class="card-small-title">
-            {{ nameRu }}
+            {{ movie.nameRu }}
         </p>
         <div class="card-small-rating">
-            <span class="card-rating">{{ rating }}</span>
-            <span class="card-year">{{ year }}</span>
+            <span class="card-rating">{{ movie.ratingKinopoisk }}</span>
+            <span class="card-year">{{ movie.year }}</span>
         </div>
-    </div>  
+    </div>
+  </div>
 </template>
 
 <script>
     export default {
         name: 'movie-small-card',
         props: {
-            img: {
-                type: String,
-                required: true
-            },
-            nameRu: String,
-            rating: Number,
-            year: Number,
-            id: Number
+            movie: {
+              required: true
+            }
         },
     }    
 </script>
 
 <style>
-.movie-small-card {
+.card__small--wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movie__card-small {
     width: 300px;
     height: 400px;
     margin: 10px;
@@ -45,17 +49,9 @@
     cursor: pointer;
 }
 
-.movie-small-card:hover {
-    width: 350px;
-    height: 450px;
+.movie__card-small:hover {
+    transform: scale(1.1);
     transition: 1s;
-}
-
-.carg-small-wrap {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 
 .card-image-small-wrap {

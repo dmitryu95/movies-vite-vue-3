@@ -1,6 +1,9 @@
 import instance from "./instance";
-import services from './movieService'
-
 export default {
-    request: services(instance)
+    getAllMovies(page, payload) {
+        return instance.get(`v2.2/films?page=${page}`, payload);
+    },
+    getMovie(id, payload) {
+        return instance.get(`v2.2/films/${id}`, payload);
+    },
 }
