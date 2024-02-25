@@ -10,25 +10,25 @@
     </div>
     <div v-show="!loading"
          class="buttons-container">
-      <btn-page
-          @update-page="updatePage(-1)"
-          :image="$constants.buttons.LEFT_BTN"
-          :page="this.page"></btn-page>
+      <ui-button
+          :imgPath="$constants.buttons.LEFT_BTN"
+          @handleBtnClick = "updatePage(-1)"
+      />
       <p class="count-page">
         {{ page }}
       </p>
-      <btn-page
-          :class="{ active: isActive }"
-          @update-page="updatePage(+1)"
-          :image="$constants.buttons.RIGHT_BTN"
-          :page="this.page"></btn-page>
+      <ui-button
+          :imgPath="$constants.buttons.RIGHT_BTN"
+          @handleBtnClick = "updatePage(1)"
+      />
     </div>
+
   </div>
 </template>
 
 <script lang="ts">
 import MovieSmallCard from './MovieSmallCard.vue';
-import BtnPage from './BtnPage.vue';
+import UiButton from "./UI/UiButton.vue";
 import { mapActions, mapGetters } from 'vuex'
 import { defineComponent } from "vue";
 
@@ -42,7 +42,7 @@ export default defineComponent({
 
   components: {
     MovieSmallCard,
-    BtnPage
+    UiButton
   },
   name: 'movie-list-page',
 
@@ -50,7 +50,7 @@ export default defineComponent({
     return {
       loading: false,
       isActive: false,
-      page: 1
+      page: '1'
     }
   },
   mounted() {
@@ -67,6 +67,9 @@ export default defineComponent({
   methods: {
     ...mapActions(['getMovies']),
 
+    handleClick() {
+      console.log('Click111')
+    },
     getMoviesList() {
       this.getMovies(localStorage.authKey)
     },

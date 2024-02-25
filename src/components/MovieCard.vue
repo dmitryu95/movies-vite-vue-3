@@ -1,7 +1,9 @@
 <template>
     <div class="movie-container" v-if="movie">
-        <btn-navigation class="movie__btn-back"
-            :image="$constants.buttons.RIGHT_BTN"/>
+      <ui-button class="movie__btn-back"
+        :imgPath="$constants.buttons.LEFT_BTN"
+        @handleBtnClick="comeBack"
+      />
         <div class="movie-image-wrap" style="margin-top: 30px;">
             <img :src= this.movie.posterUrl
                 :alt= movie.posterUrl
@@ -30,20 +32,30 @@
 </template>
 
 <script>
-import BtnNavigation from "../components/BtnNavigation.vue";
+import UiButton from "./UI/UiButton.vue";
+import * as $constants from "../constants.js";
 export default {
   components: {
-      BtnNavigation
+    UiButton,
   },
   name: 'MovieCard',
   mounted() {
     this.$store.dispatch('getMovie', this.$route.params.id)
   },
   computed: {
+    $constants() {
+      return $constants
+    },
     movie() {
       return this.$store.getters.getMovie
     }
   },
+  methods: {
+    comeBack() {
+      console.log("q1111")
+      this.$router.push({ name: 'MoviesList', params: { page: `${localStorage.page}` }})
+    }
+  }
 }
 </script>
 
