@@ -67,9 +67,6 @@ export default defineComponent({
   methods: {
     ...mapActions(['getMovies']),
 
-    handleClick() {
-      console.log('Click111')
-    },
     getMoviesList() {
       this.getMovies(localStorage.authKey)
     },
