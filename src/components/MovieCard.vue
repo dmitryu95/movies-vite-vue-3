@@ -20,7 +20,7 @@
         </div>
         <div class="movie-raiting_year-wrap">
             <span class="movie-raiting">
-                Рейтинг: 
+                Рейтинг:
                 {{  movie.ratingKinopoisk }}
             </span>
             <span class="movie-year">
@@ -31,10 +31,11 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import UiButton from "./UI/UiButton.vue";
-import * as $constants from "../constants.js";
-export default {
+import {defineComponent} from "vue";
+
+export default defineComponent({
   components: {
     UiButton,
   },
@@ -43,20 +44,17 @@ export default {
     this.$store.dispatch('getMovie', this.$route.params.id)
   },
   computed: {
-    $constants() {
-      return $constants
-    },
     movie() {
       return this.$store.getters.getMovie
     }
   },
   methods: {
     comeBack() {
-      console.log("q1111")
       this.$router.push({ name: 'MoviesList', params: { page: `${localStorage.page}` }})
     }
   }
-}
+})
+
 </script>
 
 <style scoped>

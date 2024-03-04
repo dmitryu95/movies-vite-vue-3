@@ -6,7 +6,8 @@
           v-for='movie in allMovies'
           :key="movie.kinopoiskId"
           :movie='movie'
-          @click='openMoviePage(movie.kinopoiskId)'></movie-small-card>
+          @click='openMoviePage(movie.kinopoiskId)'>
+      </movie-small-card>
     </div>
     <div v-show="!loading"
          class="buttons-container">
@@ -50,16 +51,12 @@ export default defineComponent({
     return {
       loading: false,
       isActive: false,
-      page: '1'
+      page: 1
     }
   },
   mounted() {
     this.getMoviesList()
-    if (localStorage.page > 0) {
-      this.page = localStorage.page
-    } else {
-      this.page = localStorage.page = 1
-    }
+    this.page = localStorage.page > 0 ? parseInt(localStorage.page) : 1;
   },
   computed: {
     ...mapGetters(['allMovies']),

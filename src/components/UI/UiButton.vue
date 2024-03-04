@@ -8,23 +8,25 @@
   </button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import {defineComponent} from "vue";
+
+export default defineComponent({
   name: 'ui-button',
   props: {
     imgPath:
       {
+        type: String,
         required: true,
-        type: String
       }
   },
   methods: {
-    handleClick(event) {
-      console.log('qqqqq')
+    handleClick(event: MouseEvent) {
       this.$emit('handleBtnClick', event)
     }
-  }
-}
+  },
+  emits: 'handleBtnClick'
+})
 
 </script>
 
