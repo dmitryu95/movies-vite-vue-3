@@ -1,8 +1,8 @@
 <template>
   <div v-show="movie.nameRu"
-      class="movie-small-card__wrap"
+      class="movie-small-card"
   >
-    <div class="movie-small-card"
+    <div class="movie-small-card__wrap"
         :id="movie.kinopoiskId"
     >
         <div class="movie-small-card__image-wrap">
@@ -43,47 +43,48 @@ export default defineComponent({
 
 <style>
 .movie-small-card {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 300px;
+  height: 400px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: #ada7a6;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .movie-small-card__wrap {
-    width: 300px;
-    height: 400px;
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-    background-color: #ada7a6;
-    border-radius: 10px;
-    cursor: pointer;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .movie-small-card__wrap:hover {
-    transform: scale(1.1);
-    transition: 1s;
+  transform: scale(1.1);
+  transition: 1s;
 }
 
 .movie-small-card__image-wrap {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .movie-small-card__image {
-    height: 280px;
-    margin-top: 10px;
+  height: 280px;
+  margin-top: 10px;
 }
 
 .movie-small-card__title {
-    margin: 10px 20px;
+  margin: 10px 20px;
 }
 
 .movie-small-card__rating-year-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 25px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 25px;
 }
 
 </style>
+
 
