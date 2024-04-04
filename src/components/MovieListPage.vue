@@ -1,15 +1,12 @@
 <template>
   <div class="movie-list-page">
-    <div class="movie-list-page__container"
-         :class="{active: loading}"
-    >
+    <div class="movie-list-page__container">
       <movie-small-card
           v-for='movie in getMovies'
           :key="movie.kinopoiskId"
           :movie='movie'
           @click='openMoviePage(movie.kinopoiskId)'
-      >
-      </movie-small-card>
+      />
     </div>
     <div v-show="!loading"
          class="movie-list-page__buttons-container"
@@ -33,7 +30,7 @@
 import MovieSmallCard from './MovieSmallCard.vue';
 import UiButton from "./UI/UiButton.vue";
 import { mapActions, mapGetters } from 'vuex'
-import {defineComponent, watch} from "vue";
+import {defineComponent} from "vue";
 import {buttons} from "../constants.js";
 
 interface State {
@@ -105,14 +102,6 @@ export default defineComponent({
   text-align: center;
   align-items: center;
   position: relative;
-}
-
-.active {
-  opacity: 0.2;
-}
-
-.active:hover {
-  opacity: 0.2;
 }
 
 .movie-list-page__container {
