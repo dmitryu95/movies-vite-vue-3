@@ -1,12 +1,15 @@
 <template>
-  <div class="auth-container">
+  <div class="auth-page__form">
     <h1>Введите ваш ключ</h1>
-    <input type="text"
-           v-model="key"
-           class="auth-key">
-    <button type="button"
-            class="button"
-            @click="sendRequest">Войти
+    <input class="auth-page__input"
+         type="text"
+         v-model="key"
+    >
+    <button class="auth-page__button"
+        type="button"
+        @click="sendRequest"
+    >
+      Войти
     </button>
   </div>
 </template>
@@ -33,17 +36,17 @@ export default defineComponent({
     localStorage.page = this.page
   },
   methods: {
-    ...mapActions(['getMovies']),
+    ...mapActions(['fetchMovies']),
 
     sendRequest() {
-      this.getMovies(this.key, this.page);
+      this.fetchMovies(this.key);
     },
   }
 })
 </script>
 
 <style scoped>
-.auth-container {
+.auth-page__form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +55,7 @@ export default defineComponent({
   margin-top: 300px;
 }
 
-.auth-key {
+.auth-page__input {
   height: 40px;
   width: 350px;
   border: 4px solid #88b3f7;
@@ -63,11 +66,11 @@ export default defineComponent({
   text-align: center;
 }
 
-.auth-key:focus {
+.auth-page__input:focus {
   outline: none;
 }
 
-.button {
+.auth-page__button {
   width: 100%;
   margin-top: 50px;
 }
