@@ -10,7 +10,8 @@
         <div class="movie-card__image-wrap"
              style="margin-top: 30px"
         >
-            <img :src= this.movie.posterUrl
+            <img class="movie-card__img"
+                :src= this.movie.posterUrl
                   :alt= movie.posterUrl
                   height="800px"
             >
@@ -20,16 +21,16 @@
         </h1>
         <div class="movie-card__description-wrap">
             <h2 class="movie-card__about">Описание</h2>
-            <p class="movie-card__description">
+            <p class="movie-card__description movie-card__p ">
                 {{ description }}
             </p>
         </div>
         <div class="movie-card__footer-wrap">
-            <span class="movie-card__rating">
+            <span class="movie-card__rating movie-card__span">
                 Рейтинг:
                 {{  rating }}
             </span>
-            <span class="movie-card__year">
+            <span class="movie-card__year  movie-card__span">
                 Дата выхода:
                 {{ year }}
             </span>
@@ -145,17 +146,17 @@ export default defineComponent({
     margin: 0 0 50px 0;
 }
 
-span {
+.movie-card__span {
     font-size: 18px;
     color: black;
 }
 
-p {
+.movie-card__p {
     font-size: 18px;
     color: black;
 }
 
-img {
+.movie-card__img {
     border-radius: 12px;
 }
 </style>
